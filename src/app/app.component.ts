@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { AppConfig, APP_CONFIG } from './core/models/app-config.model';
 
 @Component({
@@ -7,18 +6,5 @@ import { AppConfig, APP_CONFIG } from './core/models/app-config.model';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  constructor(private translate: TranslateService, @Inject(APP_CONFIG) private appConfig: AppConfig) {
-    this.translate.addLangs(['pl-pl', 'en-us']);
-    this.translate.use('pl-pl');
-
-    console.log(this.appConfig);
-  }
-
-  a() {
-    this.translate.use('pl-pl');
-  }
-
-  b() {
-    this.translate.use('en-us');
-  }
+  constructor(@Inject(APP_CONFIG) private appConfig: AppConfig) { }
 }

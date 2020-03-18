@@ -1,24 +1,26 @@
 import { HttpClient } from '@angular/common/http';
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from '../app.routes';
+import { languageInitializerFactory } from './initializers/language.initializer';
+import { APP_CONFIG } from './models/app-config.model';
 
 export function translateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-// all modules with forRoot static method
+// providers of all modules with forRoot static method
 const forRootModues = [
-  RouterModule.forRoot(routes),
+  RouterModule.forRoot(routes).providers,
   TranslateModule.forRoot({
     loader: {
       provide: TranslateLoader,
       useFactory: translateLoaderFactory,
       deps: [HttpClient]
     }
-  })
+  }).providers
 ];
 
 @NgModule({})
@@ -33,7 +35,13 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        forRootModues.map(e => e.providers) // retrive all forRoot providers
+        forRootModues,
+        {
+          provide: APP_INITIALIZER,
+          useFactory: languageInitializerFactory,
+          deps: [TranslateService, APP_CONFIG],
+          multi: true
+        }
       ]
     };
   }

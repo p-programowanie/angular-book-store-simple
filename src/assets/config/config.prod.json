@@ -1,5 +1,6 @@
 {
   "production": true,
   "supportedLanguages": ["pl-pl", "en-us"],
-  "defaultLanguage": ["pl-pl"]
+  "defaultLanguage": ["en-us"],
+  "tryDetectBrowserLanguage": true
 }
