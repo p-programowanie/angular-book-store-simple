@@ -1,0 +1,5 @@
+{
+  "production": true,
+  "supportedLanguages": ["pl-pl", "en-us"],
+  "defaultLanguage": ["pl-pl"]
+}

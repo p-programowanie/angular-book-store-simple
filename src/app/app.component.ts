@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { AppConfig, APP_CONFIG } from './core/models/app-config.model';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'angular-book-store-simple';
+  constructor(private translate: TranslateService, @Inject(APP_CONFIG) private appConfig: AppConfig) {
+    this.translate.addLangs(['pl-pl', 'en-us']);
+    this.translate.use('pl-pl');
+
+    console.log(this.appConfig);
+  }
+
+  a() {
+    this.translate.use('pl-pl');
+  }
+
+  b() {
+    this.translate.use('en-us');
+  }
 }
