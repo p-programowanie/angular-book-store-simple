@@ -1,6 +1,15 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "no-unnecessary-initializer": true,
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "prefer-const": true,
+    "semicolon": [true, "always"],
+    "triple-equals": [true, "allow-null-check"],
+    "eofline": true,
+    "import-spacing": true,
+    "interface-over-type-literal": true,
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -9,6 +18,7 @@
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
+    "no-conditional-assignment": true,
     "directive-selector": [
       true,
       "attribute",

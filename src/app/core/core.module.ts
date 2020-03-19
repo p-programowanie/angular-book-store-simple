@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -23,7 +24,9 @@ const forRootModues = [
   }).providers
 ];
 
-@NgModule({})
+@NgModule({
+  imports: [BrowserModule, HttpClientModule]
+})
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parent: CoreModule) {
     if (parent) {

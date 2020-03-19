@@ -20,10 +20,6 @@ export class HeaderComponent implements OnInit {
       href: '/'
     },
     {
-      label: 'Users',
-      href: '/users'
-    },
-    {
       label: 'Books',
       href: '/books'
     }
