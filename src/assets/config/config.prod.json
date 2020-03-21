@@ -3,5 +3,5 @@
   "supportedLanguages": ["pl-pl", "en-us"],
   "defaultLanguage": ["en-us"],
   "tryDetectBrowserLanguage": true,
-  "authApi": "/auth"
+  "apiPath": "/api"
 }

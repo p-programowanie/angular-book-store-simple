@@ -1,3 +1,4 @@
+import { HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { delay, map, tap } from 'rxjs/operators';
@@ -24,13 +25,13 @@ export class AuthorizationService {
       delay(1500),
       tap(_ => {
         this.isAuthorizedSubject.next(true);
-        this.jwt = 'ey123456';
-        this.refreshJwt = 'ey123456';
+        this.jwt = `ey123456`;
+        this.refreshJwt = `ey123456`;
         this.sessionService.setSessionData({
           user: {
             id: 1,
-            name: 'john',
-            email: 'jogn@blue.com'
+            name: `john`,
+            email: `jogn@blue.com`
           }
         });
       }),
@@ -42,10 +43,18 @@ export class AuthorizationService {
     return of(null).pipe(
       delay(1500),
       tap(_ => {
-        this.jwt = 'ey123456';
-        this.refreshJwt = 'ey123456';
+        this.jwt = `ey123456_new`;
+        this.refreshJwt = `ey123456_new`;
       }),
       map(_ => true)
     );
+  }
+
+  addAuthorizeHeader(request: HttpRequest<any>): HttpRequest<any> {
+    return request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${this.jwt}`
+      }
+    });
   }
 }

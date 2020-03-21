@@ -5,7 +5,7 @@ export interface AppConfig {
   supportedLanguages: string[];
   defaultLanguage: string;
   tryDetectBrowserLanguage: boolean;
-  authApi: string;
+  apiPath: string;
 }
 
 export const APP_CONFIG = new InjectionToken<AppConfig>('AppConfig');

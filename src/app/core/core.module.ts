@@ -1,8 +1,9 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { languageInitializerFactory } from './initializers/language.initializer';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { APP_CONFIG } from './models/app-config.model';
 import { AuthorizationService } from './services/authorization.service';
 import { SessionService } from './services/session.service';
@@ -15,6 +16,11 @@ const coreProviders = [
     provide: APP_INITIALIZER,
     useFactory: languageInitializerFactory,
     deps: [TranslateService, APP_CONFIG],
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
     multi: true
   }
 ];
