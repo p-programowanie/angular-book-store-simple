@@ -17,12 +17,6 @@
     "alwaysStrict": true,
     "strictFunctionTypes": true,
     "strict": true,
-    "strictInputTypes": true,
-    "strictNullInputTypes": true,
-    "strictAttributeTypes": true,
-    "strictSafeNavigationTypes": true,
-    "strictOutputEventTypes": true,
-    "strictLiteralTypes": true,
     "lib": [
       "es2018",
       "dom"
@@ -31,6 +25,12 @@
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "strictInputTypes": true,
+    "strictNullInputTypes": true,
+    "strictAttributeTypes": true,
+    "strictSafeNavigationTypes": true,
+    "strictOutputEventTypes": true,
+    "strictLiteralTypes": true,
   }
 }

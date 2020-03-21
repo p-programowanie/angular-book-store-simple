@@ -10,8 +10,7 @@ export function languageInitializerFactory(
       translateService.addLangs(appConfig.supportedLanguages);
 
       const browserLang = navigator?.language?.toLowerCase();
-      const isBrowserLangSupported = new RegExp(appConfig.supportedLanguages
-        .join('|'))
+      const isBrowserLangSupported = new RegExp(appConfig.supportedLanguages.join('|'))
         .test(browserLang);
 
       const langToSet =

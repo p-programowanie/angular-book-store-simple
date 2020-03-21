@@ -2,5 +2,6 @@
   "production": true,
   "supportedLanguages": ["pl-pl", "en-us"],
   "defaultLanguage": ["en-us"],
-  "tryDetectBrowserLanguage": true
+  "tryDetectBrowserLanguage": true,
+  "authApi": "/auth"
 }
